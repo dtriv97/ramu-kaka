@@ -1,0 +1,19 @@
+# Copy to /home/aiagent/litellm_config.yaml and set a strong master_key.
+# Clawdbot uses the same value as OPENAI_API_KEY when calling the proxy.
+
+model_list:
+  - model_name: default
+    litellm_params:
+      model: ollama/gemma2:2b
+      api_base: http://127.0.0.1:11434
+
+  - model_name: fast
+    litellm_params:
+      model: ollama/tinyllama
+      api_base: http://127.0.0.1:11434
+
+router_settings:
+  routing_strategy: simple-shuffle
+
+general_settings:
+  master_key: "change-me-to-a-long-random-secret"

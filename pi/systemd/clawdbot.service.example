@@ -1,0 +1,23 @@
+# Install after `clawdbot onboard` and verify `which clawdbot`.
+# Adjust WorkingDirectory / ExecStart if your install path differs.
+#
+#   sudo cp pi/systemd/clawdbot.service.example /etc/systemd/system/clawdbot.service
+#   sudo systemctl daemon-reload && sudo systemctl enable --now clawdbot
+
+[Unit]
+Description=Clawdbot (OpenClaw) agent for Ramu Kaka
+After=network-online.target litellm.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=aiagent
+Group=aiagent
+WorkingDirectory=/home/aiagent
+# Prefer a clawdbot-managed data dir if onboard created one; override as needed.
+ExecStart=/usr/bin/clawdbot start
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

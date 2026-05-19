@@ -1,0 +1,16 @@
+[Unit]
+Description=LiteLLM model proxy for Ramu Kaka
+After=network-online.target ollama.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=aiagent
+Group=aiagent
+Environment=PATH=/home/aiagent/venvs/litellm/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/aiagent/venvs/litellm/bin/litellm --config /home/aiagent/litellm_config.yaml --port 4000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

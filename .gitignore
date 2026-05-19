@@ -137,3 +137,6 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Pi: real LiteLLM config if copied into the repo
+pi/config/litellm_config.yaml
